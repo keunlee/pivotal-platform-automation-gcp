@@ -117,7 +117,7 @@ jobs:
       state: state
     params:
       STATE_FILE: state.yml
-      OPSMAN_CONFIG_FILE: config/ops-manager/2.5/gcp/config-vm.yml
+      OPSMAN_CONFIG_FILE: config/ops-manager/2.8/gcp/config-vm.yml
   - put: state
     params:
       file: generated-state/state.yml

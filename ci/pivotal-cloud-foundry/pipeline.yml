@@ -282,7 +282,7 @@ jobs:
       config: config
       vars: config
     params:
-      OPSMAN_CONFIG_FILE: config/ops-manager/2.5/gcp/config-vm.yml
+      OPSMAN_CONFIG_FILE: config/ops-manager/2.8/gcp/config-vm.yml
   - put: state
     params:
       file: generated-state/state.yml
@@ -305,7 +305,7 @@ jobs:
       vars: config
     params:
       ENV_FILE: config/ops-manager/env.yml
-      DIRECTOR_CONFIG_FILE: config/ops-manager/2.5/gcp/config.yml
+      DIRECTOR_CONFIG_FILE: config/ops-manager/2.8/gcp/config.yml
   - task: apply-director-changes
     image: platform-automation-image
     file: platform-automation-tasks/tasks/apply-director-changes.yml
@@ -399,7 +399,7 @@ jobs:
       vars: config
     params:
       ENV_FILE: config/ops-manager/env.yml
-      OPSMAN_CONFIG_FILE: config/ops-manager/2.5/gcp/config-vm.yml
+      OPSMAN_CONFIG_FILE: config/ops-manager/2.8/gcp/config-vm.yml
   - put: state
     params:
       file: generated-state/state.yml
@@ -996,7 +996,7 @@ jobs:
       env: config
       vars: config
     params:
-      CONFIG_FILE: config/pivotal-container-service/1.4/config.yml
+      CONFIG_FILE: config/pivotal-container-service/1.6/config.yml
       ENV_FILE: config/ops-manager/env.yml
 
 - name: configure-harbor
@@ -1040,7 +1040,7 @@ jobs:
       env: config
       vars: config
     params:
-      CONFIG_FILE: config/harbor-container-registry/1.7/config.yml
+      CONFIG_FILE: config/harbor-container-registry/1.10/config.yml
       ENV_FILE: config/ops-manager/env.yml
 
 - name: configure-pas
@@ -1084,7 +1084,7 @@ jobs:
       env: config
       vars: config
     params:
-      CONFIG_FILE: config/cf/2.5/config.yml
+      CONFIG_FILE: config/cf/2.8/config.yml
       ENV_FILE: config/ops-manager/env.yml
 
 - name: configure-healthwatch
@@ -1128,7 +1128,7 @@ jobs:
       env: config
       vars: config
     params:
-      CONFIG_FILE: config/p-healthwatch/1.4/config.yml
+      CONFIG_FILE: config/p-healthwatch/1.8/config.yml
       ENV_FILE: config/ops-manager/env.yml
 
 - name: configure-jenkins
@@ -1172,7 +1172,7 @@ jobs:
       env: config
       vars: config
     params:
-      CONFIG_FILE: config/jenkins/1.0/config.yml
+      CONFIG_FILE: config/jenkins/1.1/config.yml
       ENV_FILE: config/ops-manager/env.yml
 
 - name: configure-rabbitmq
@@ -1216,7 +1216,7 @@ jobs:
       env: config
       vars: config
     params:
-      CONFIG_FILE: config/p-rabbitmq/1.16/config.yml
+      CONFIG_FILE: config/p-rabbitmq/1.18/config.yml
       ENV_FILE: config/ops-manager/env.yml
 
 - name: configure-redis
@@ -1349,7 +1349,7 @@ jobs:
       env: config
       vars: config
     params:
-      CONFIG_FILE: config/pasw/2.4/config.yml
+      CONFIG_FILE: config/pasw/2.8/config.yml
       ENV_FILE: config/ops-manager/env.yml
 
 - name: configure-pcfmetrics
@@ -1438,7 +1438,7 @@ jobs:
       env: config
       vars: config
     params:
-      CONFIG_FILE: config/pivotal-mysql/2.5/config.yml
+      CONFIG_FILE: config/pivotal-mysql/2.7/config.yml
       ENV_FILE: config/ops-manager/env.yml
 
 

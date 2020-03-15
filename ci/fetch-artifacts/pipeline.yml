@@ -278,7 +278,7 @@ jobs:
     image: platform-automation-image
     file: platform-automation-tasks/tasks/download-product.yml
     params:
-      CONFIG_FILE: config/ops-manager/2.5/gcp/config-pivnet.yml
+      CONFIG_FILE: config/ops-manager/2.8/gcp/config-pivnet.yml
   - aggregate:
     - put: opsman-product
       params:
@@ -315,7 +315,7 @@ jobs:
     image: platform-automation-image
     file: platform-automation-tasks/tasks/download-product.yml
     params:
-      CONFIG_FILE: config/pivotal-container-service/1.4/config-pivnet.yml
+      CONFIG_FILE: config/pivotal-container-service/1.6/config-pivnet.yml
     output_mapping: {downloaded-stemcell: pks-stemcell}
   - aggregate:
     - put: pks-product
@@ -357,7 +357,7 @@ jobs:
     image: platform-automation-image
     file: platform-automation-tasks/tasks/download-product.yml
     params:
-      CONFIG_FILE: config/harbor-container-registry/1.7/config-pivnet.yml
+      CONFIG_FILE: config/harbor-container-registry/1.10/config-pivnet.yml
     output_mapping: {downloaded-stemcell: harbor-stemcell}
   - aggregate:
     - put: harbor-product
@@ -398,7 +398,7 @@ jobs:
     image: platform-automation-image
     file: platform-automation-tasks/tasks/download-product.yml
     params:
-      CONFIG_FILE: config/cf/2.5/config-pivnet.yml
+      CONFIG_FILE: config/cf/2.8/config-pivnet.yml
     output_mapping: {downloaded-stemcell: pas-stemcell}
   - aggregate:
     - put: pas-product
@@ -439,7 +439,7 @@ jobs:
     image: platform-automation-image
     file: platform-automation-tasks/tasks/download-product.yml
     params:
-      CONFIG_FILE: config/p-healthwatch/1.4/config-pivnet.yml
+      CONFIG_FILE: config/p-healthwatch/1.8/config-pivnet.yml
     output_mapping: {downloaded-stemcell: healthwatch-stemcell}
   - aggregate:
     - put: healthwatch-product
@@ -480,7 +480,7 @@ jobs:
     image: platform-automation-image
     file: platform-automation-tasks/tasks/download-product.yml
     params:
-      CONFIG_FILE: config/jenkins/1.0/config-pivnet.yml
+      CONFIG_FILE: config/jenkins/1.1/config-pivnet.yml
     output_mapping: {downloaded-stemcell: jenkins-stemcell}
   - aggregate:
     - put: jenkins-product
@@ -522,7 +522,7 @@ jobs:
     image: platform-automation-image
     file: platform-automation-tasks/tasks/download-product.yml
     params:
-      CONFIG_FILE: config/p-redis/2.0/config-pivnet.yml
+      CONFIG_FILE: config/p-redis/2.3/config-pivnet.yml
     output_mapping: {downloaded-stemcell: redis-stemcell}
   - aggregate:
     - put: redis-product
@@ -563,7 +563,7 @@ jobs:
     image: platform-automation-image
     file: platform-automation-tasks/tasks/download-product.yml
     params:
-      CONFIG_FILE: config/p-rabbitmq/1.16/config-pivnet.yml
+      CONFIG_FILE: config/p-rabbitmq/1.18/config-pivnet.yml
     output_mapping: {downloaded-stemcell: rabbitmq-stemcell}
   - aggregate:
     - put: rabbitmq-product
@@ -604,7 +604,7 @@ jobs:
     image: platform-automation-image
     file: platform-automation-tasks/tasks/download-product.yml
     params:
-      CONFIG_FILE: config/p-scs/2.0/config-pivnet.yml
+      CONFIG_FILE: config/p-scs/3.0/config-pivnet.yml
     output_mapping: {downloaded-stemcell: scs-stemcell}
   - aggregate:
     - put: scs-product
@@ -688,7 +688,7 @@ jobs:
     image: platform-automation-image
     file: platform-automation-tasks/tasks/download-product.yml
     params:
-      CONFIG_FILE: config/pasw/2.4/config-pivnet.yml
+      CONFIG_FILE: config/pasw/2.8/config-pivnet.yml
     output_mapping: {downloaded-stemcell: pasw-stemcell}
   - aggregate:
     - put: pasw-product
@@ -770,7 +770,7 @@ jobs:
     image: platform-automation-image
     file: platform-automation-tasks/tasks/download-product.yml
     params:
-      CONFIG_FILE: config/pivotal-mysql/2.5/config-pivnet.yml
+      CONFIG_FILE: config/pivotal-mysql/2.8/config-pivnet.yml
     output_mapping: {downloaded-stemcell: mysql-stemcell}
   - aggregate:
     - put: mysql-product
