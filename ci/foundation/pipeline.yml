@@ -11,14 +11,42 @@ resources:
   source:
     product_slug: platform-automation
     api_token: ((pivnet-api-token))
+- name: config
+  type: git
+  source:
+    uri: ((config-uri))
+    branch: master
 jobs:
-- name: test
+- name: install-ops-manager
+  serial: true
   plan:
     - get: platform-automation-image
       resource: platform-automation
       params:
         globs: ["*image*.tgz"]
         unpack: true
+    - get: config
+    - task: credhub-interpolate
+      image: platform-automation-image
+      file: platform-automation-tasks/tasks/credhub-interpolate.yml
+      params:
+        CREDHUB_CA_CERT: ((credhub-ca-cert))
+        CREDHUB_CLIENT: ((credhub-client))
+        CREDHUB_SECRET: ((credhub-secret))
+        CREDHUB_SERVER: ((credhub-server))
+        PREFIX: /
+        INTERPOLATION_PATH: config
+      input_mapping:
+        files: config
+      output_mapping:
+        interpolated-files: interpolated-config
+    - task: download-product        
+      image: platform-automation-image
+      file: platform-automation-tasks/tasks/download-product.yml
+      params:
+        CONFIG_FILE: download-ops-manager.yml
+      input_mapping:
+        config: interpolated-config
     - get: platform-automation-tasks
       resource: platform-automation
       params:
@@ -27,3 +55,6 @@ jobs:
     - task: test
       image: platform-automation-image
       file: platform-automation-tasks/tasks/test.yml
+    - task: create-vm
+      image: platform-automation-image
+      file: platform-automation-tasks/tasks/create-vm.yml
