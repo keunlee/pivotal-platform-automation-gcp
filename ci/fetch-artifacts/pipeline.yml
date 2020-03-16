@@ -20,18 +20,18 @@ resources:
   source:
     uri: ((config-uri))
     branch: master
-# - name: platform-automation-pivnet
-#   type: pivnet
-#   source:
-#     api_token: ((pivnet-token))
-#     product_slug: platform-automation
-#     product_version: 2\.(.*)
-#     sort_by: semver
 - name: platform-automation-pivnet
   type: pivnet
   source:
-    product_slug: platform-automation
     api_token: ((pivnet-token))
+    product_slug: platform-automation
+    product_version: 3\.(.*)
+    sort_by: semver
+# - name: platform-automation-pivnet
+#   type: pivnet
+#   source:
+#     product_slug: platform-automation
+#     api_token: ((pivnet-token))
 - name: opsman-product
   type: gcs
   source:
@@ -791,30 +791,30 @@ jobs:
   # We use the pivnet resource to bootstrap the pipeline,
   # and because this product is part of the pipeline, not the foundation
   plan:
-  - get: platform-automation-image
-    resource: platform-automation-pivnet
-    params:
-      globs: ["*image*.tgz"]
-      unpack: false
-  - aggregate:
-    - put: platform-automation-image
-      params:
-        file: platform-automation-pivnet/*image*.zip
-  - get: platform-automation-tasks
-    resource: platform-automation-pivnet
-    params:
-      globs: ["*tasks*.zip"]
-      unpack: false
-  - put: platform-automation-tasks
-    params:
-      file: platform-automation-pivnet/*tasks*.tgz
-
-  # - get: platform-automation-pivnet
-  #   trigger: true
+  # - get: platform-automation-image
+  #   resource: platform-automation-pivnet
+  #   params:
+  #     globs: ["*image*.tgz"]
+  #     unpack: false
   # - aggregate:
-  #   - put: platform-automation-tasks
-  #     params:
-  #       file: platform-automation-pivnet/*tasks-4.3.*.zip
   #   - put: platform-automation-image
   #     params:
-  #       file: platform-automation-pivnet/*image-4.3.*.tgz
+  #       file: platform-automation-pivnet/*image*.zip
+  # - get: platform-automation-tasks
+  #   resource: platform-automation-pivnet
+  #   params:
+  #     globs: ["*tasks*.zip"]
+  #     unpack: false
+  # - put: platform-automation-tasks
+  #   params:
+  #     file: platform-automation-pivnet/*tasks*.tgz
+
+  - get: platform-automation-pivnet
+    trigger: true
+  - aggregate:
+    - put: platform-automation-tasks
+      params:
+        file: platform-automation-pivnet/*tasks*.zip
+    - put: platform-automation-image
+      params:
+        file: platform-automation-pivnet/*image*.tgz
