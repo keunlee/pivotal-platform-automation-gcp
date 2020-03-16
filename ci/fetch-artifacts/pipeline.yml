@@ -20,13 +20,18 @@ resources:
   source:
     uri: ((config-uri))
     branch: master
+# - name: platform-automation-pivnet
+#   type: pivnet
+#   source:
+#     api_token: ((pivnet-token))
+#     product_slug: platform-automation
+#     product_version: 2\.(.*)
+#     sort_by: semver
 - name: platform-automation-pivnet
   type: pivnet
   source:
-    api_token: ((pivnet-token))
     product_slug: platform-automation
-    product_version: 2\.(.*)
-    sort_by: semver
+    api_token: ((pivnet-token))
 - name: opsman-product
   type: gcs
   source:
@@ -786,12 +791,23 @@ jobs:
   # We use the pivnet resource to bootstrap the pipeline,
   # and because this product is part of the pipeline, not the foundation
   plan:
-  - get: platform-automation-pivnet
-    trigger: true
-  - aggregate:
-    - put: platform-automation-tasks
-      params:
-        file: platform-automation-pivnet/*tasks-4.3.*.zip
-    - put: platform-automation-image
-      params:
-        file: platform-automation-pivnet/*image-4.3.*.tgz
+  - get: platform-automation-image
+    resource: platform-automation-pivnet
+    params:
+      globs: ["*image*.tgz"]
+      unpack: true
+  - get: platform-automation-tasks
+    resource: platform-automation-pivnet
+    params:
+      globs: ["*tasks*.zip"]
+      unpack: true
+
+  # - get: platform-automation-pivnet
+  #   trigger: true
+  # - aggregate:
+  #   - put: platform-automation-tasks
+  #     params:
+  #       file: platform-automation-pivnet/*tasks-4.3.*.zip
+  #   - put: platform-automation-image
+  #     params:
+  #       file: platform-automation-pivnet/*image-4.3.*.tgz
