@@ -196,7 +196,7 @@ jobs:
     file: platform-automation-tasks/tasks/prepare-tasks-with-secrets.yml
     input_mapping:
       tasks: platform-automation-tasks
-      config: deployments
+      # config: deployments
     output_mapping:
       tasks: platform-automation-tasks
     params:
