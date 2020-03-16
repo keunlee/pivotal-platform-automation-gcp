@@ -594,21 +594,32 @@ jobs:
       params:
         unpack: true
     - get: config
-  - task: credhub-interpolate-config
-    
-    image: platform-automation-image
-    file: platform-automation-tasks/tasks/credhub-interpolate.yml
-    params:
-      CREDHUB_CA_CERT: ((credhub-ca-cert))
-      CREDHUB_CLIENT: ((credhub-client))
-      CREDHUB_SECRET: ((credhub-secret))
-      CREDHUB_SERVER: ((credhub-server))
-      PREFIX: /
-      INTERPOLATION_PATH: config
+  # - task: credhub-interpolate-config
+  #   image: platform-automation-image
+  #   file: platform-automation-tasks/tasks/credhub-interpolate.yml
+  #   params:
+  #     CREDHUB_CA_CERT: ((credhub-ca-cert))
+  #     CREDHUB_CLIENT: ((credhub-client))
+  #     CREDHUB_SECRET: ((credhub-secret))
+  #     CREDHUB_SERVER: ((credhub-server))
+  #     PREFIX: /
+  #     INTERPOLATION_PATH: config
+  #   input_mapping:
+  #     files: config
+  #   output_mapping:
+  #     interpolated-files: config
+  - task: prepare-tasks-with-secrets
+    file: platform-automation-tasks/tasks/prepare-tasks-with-secrets.yml
     input_mapping:
-      files: config
+      tasks: platform-automation-tasks
+      config: config
+      vars: config  # required only if using vars
     output_mapping:
-      interpolated-files: config
+      tasks: platform-automation-tasks
+    params:
+      CONFIG_PATHS: config
+      VARS_PATHS: config # required only if using vars
+
   - task: download-scs-product-and-stemcell
     image: platform-automation-image
     file: platform-automation-tasks/tasks/download-product.yml
