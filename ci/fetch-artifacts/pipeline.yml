@@ -614,12 +614,12 @@ jobs:
     input_mapping:
       tasks: platform-automation-tasks
       config: config
-      vars: config  # required only if using vars
+      # vars: vars  # required only if using vars
     output_mapping:
       tasks: platform-automation-tasks
     params:
       CONFIG_PATHS: config
-      VARS_PATHS: config # required only if using vars
+      # VARS_PATHS: vars # required only if using vars
 
   - task: download-scs-product-and-stemcell
     image: platform-automation-image
