@@ -614,7 +614,7 @@ jobs:
     input_mapping:
       tasks: platform-automation-tasks
       config: config
-      vars: config  # required only if using vars
+      vars: vars  # required only if using vars
     output_mapping:
       tasks: platform-automation-tasks
     params:
