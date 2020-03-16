@@ -260,20 +260,6 @@ jobs:
       params:
         unpack: true
     - get: config
-  # - task: credhub-interpolate-config
-  #   image: platform-automation-image
-  #   file: platform-automation-tasks/tasks/credhub-interpolate.yml
-  #   params:
-  #     CREDHUB_CA_CERT: ((credhub-ca-cert))
-  #     CREDHUB_CLIENT: ((credhub-client))
-  #     CREDHUB_SECRET: ((credhub-secret))
-  #     CREDHUB_SERVER: ((credhub-server))
-  #     PREFIX: /
-  #     INTERPOLATION_PATH: config
-  #   input_mapping:
-  #     files: config
-  #   output_mapping:
-  #     interpolated-files: config
   - task: prepare-tasks-with-secrets
     image: platform-automation-image
     file: platform-automation-tasks/tasks/prepare-tasks-with-secrets.yml
@@ -309,20 +295,6 @@ jobs:
       params:
         unpack: true
     - get: config
-  # - task: credhub-interpolate-config
-  #   image: platform-automation-image
-  #   file: platform-automation-tasks/tasks/credhub-interpolate.yml
-  #   params:
-  #     CREDHUB_CA_CERT: ((credhub-ca-cert))
-  #     CREDHUB_CLIENT: ((credhub-client))
-  #     CREDHUB_SECRET: ((credhub-secret))
-  #     CREDHUB_SERVER: ((credhub-server))
-  #     PREFIX: /
-  #     INTERPOLATION_PATH: config
-  #   input_mapping:
-  #     files: config
-  #   output_mapping:
-  #     interpolated-files: config
   - task: prepare-tasks-with-secrets
     image: platform-automation-image
     file: platform-automation-tasks/tasks/prepare-tasks-with-secrets.yml
@@ -363,20 +335,6 @@ jobs:
       params:
         unpack: true
     - get: config
-  # - task: credhub-interpolate-config
-  #   image: platform-automation-image
-  #   file: platform-automation-tasks/tasks/credhub-interpolate.yml
-  #   params:
-  #     CREDHUB_CA_CERT: ((credhub-ca-cert))
-  #     CREDHUB_CLIENT: ((credhub-client))
-  #     CREDHUB_SECRET: ((credhub-secret))
-  #     CREDHUB_SERVER: ((credhub-server))
-  #     PREFIX: /
-  #     INTERPOLATION_PATH: config
-  #   input_mapping:
-  #     files: config
-  #   output_mapping:
-  #     interpolated-files: config
   - task: prepare-tasks-with-secrets
     image: platform-automation-image
     file: platform-automation-tasks/tasks/prepare-tasks-with-secrets.yml
@@ -416,20 +374,6 @@ jobs:
       params:
         unpack: true
     - get: config
-  # - task: credhub-interpolate-config   
-  #   image: platform-automation-image
-  #   file: platform-automation-tasks/tasks/credhub-interpolate.yml
-  #   params:
-  #     CREDHUB_CA_CERT: ((credhub-ca-cert))
-  #     CREDHUB_CLIENT: ((credhub-client))
-  #     CREDHUB_SECRET: ((credhub-secret))
-  #     CREDHUB_SERVER: ((credhub-server))
-  #     PREFIX: /
-  #     INTERPOLATION_PATH: config
-  #   input_mapping:
-  #     files: config
-  #   output_mapping:
-  #     interpolated-files: config
   - task: prepare-tasks-with-secrets
     image: platform-automation-image
     file: platform-automation-tasks/tasks/prepare-tasks-with-secrets.yml
@@ -469,20 +413,6 @@ jobs:
       params:
         unpack: true
     - get: config
-  # - task: credhub-interpolate-config
-  #   image: platform-automation-image
-  #   file: platform-automation-tasks/tasks/credhub-interpolate.yml
-  #   params:
-  #     CREDHUB_CA_CERT: ((credhub-ca-cert))
-  #     CREDHUB_CLIENT: ((credhub-client))
-  #     CREDHUB_SECRET: ((credhub-secret))
-  #     CREDHUB_SERVER: ((credhub-server))
-  #     PREFIX: /
-  #     INTERPOLATION_PATH: config
-  #   input_mapping:
-  #     files: config
-  #   output_mapping:
-  #     interpolated-files: config
   - task: prepare-tasks-with-secrets
     image: platform-automation-image
     file: platform-automation-tasks/tasks/prepare-tasks-with-secrets.yml
@@ -522,20 +452,6 @@ jobs:
       params:
         unpack: true
     - get: config
-  # - task: credhub-interpolate-config
-  #   image: platform-automation-image
-  #   file: platform-automation-tasks/tasks/credhub-interpolate.yml
-  #   params:
-  #     CREDHUB_CA_CERT: ((credhub-ca-cert))
-  #     CREDHUB_CLIENT: ((credhub-client))
-  #     CREDHUB_SECRET: ((credhub-secret))
-  #     CREDHUB_SERVER: ((credhub-server))
-  #     PREFIX: /
-  #     INTERPOLATION_PATH: config
-  #   input_mapping:
-  #     files: config
-  #   output_mapping:
-  #     interpolated-files: config
   - task: prepare-tasks-with-secrets
     image: platform-automation-image
     file: platform-automation-tasks/tasks/prepare-tasks-with-secrets.yml
@@ -576,20 +492,6 @@ jobs:
       params:
         unpack: true
     - get: config
-  # - task: credhub-interpolate-config
-  #   image: platform-automation-image
-  #   file: platform-automation-tasks/tasks/credhub-interpolate.yml
-  #   params:
-  #     CREDHUB_CA_CERT: ((credhub-ca-cert))
-  #     CREDHUB_CLIENT: ((credhub-client))
-  #     CREDHUB_SECRET: ((credhub-secret))
-  #     CREDHUB_SERVER: ((credhub-server))
-  #     PREFIX: /
-  #     INTERPOLATION_PATH: config
-  #   input_mapping:
-  #     files: config
-  #   output_mapping:
-  #     interpolated-files: config
   - task: prepare-tasks-with-secrets
     image: platform-automation-image
     file: platform-automation-tasks/tasks/prepare-tasks-with-secrets.yml
@@ -629,20 +531,6 @@ jobs:
       params:
         unpack: true
     - get: config
-  # - task: credhub-interpolate-config
-  #   image: platform-automation-image
-  #   file: platform-automation-tasks/tasks/credhub-interpolate.yml
-  #   params:
-  #     CREDHUB_CA_CERT: ((credhub-ca-cert))
-  #     CREDHUB_CLIENT: ((credhub-client))
-  #     CREDHUB_SECRET: ((credhub-secret))
-  #     CREDHUB_SERVER: ((credhub-server))
-  #     PREFIX: /
-  #     INTERPOLATION_PATH: config
-  #   input_mapping:
-  #     files: config
-  #   output_mapping:
-  #     interpolated-files: config
   - task: prepare-tasks-with-secrets
     image: platform-automation-image
     file: platform-automation-tasks/tasks/prepare-tasks-with-secrets.yml
@@ -682,20 +570,6 @@ jobs:
       params:
         unpack: true
     - get: config
-  # - task: credhub-interpolate-config
-  #   image: platform-automation-image
-  #   file: platform-automation-tasks/tasks/credhub-interpolate.yml
-  #   params:
-  #     CREDHUB_CA_CERT: ((credhub-ca-cert))
-  #     CREDHUB_CLIENT: ((credhub-client))
-  #     CREDHUB_SECRET: ((credhub-secret))
-  #     CREDHUB_SERVER: ((credhub-server))
-  #     PREFIX: /
-  #     INTERPOLATION_PATH: config
-  #   input_mapping:
-  #     files: config
-  #   output_mapping:
-  #     interpolated-files: config
   - task: prepare-tasks-with-secrets
     image: platform-automation-image
     file: platform-automation-tasks/tasks/prepare-tasks-with-secrets.yml
@@ -737,20 +611,6 @@ jobs:
       params:
         unpack: true
     - get: config
-  # - task: credhub-interpolate-config
-  #   image: platform-automation-image
-  #   file: platform-automation-tasks/tasks/credhub-interpolate.yml
-  #   params:
-  #     CREDHUB_CA_CERT: ((credhub-ca-cert))
-  #     CREDHUB_CLIENT: ((credhub-client))
-  #     CREDHUB_SECRET: ((credhub-secret))
-  #     CREDHUB_SERVER: ((credhub-server))
-  #     PREFIX: /
-  #     INTERPOLATION_PATH: config
-  #   input_mapping:
-  #     files: config
-  #   output_mapping:
-  #     interpolated-files: config
   - task: prepare-tasks-with-secrets
     image: platform-automation-image
     file: platform-automation-tasks/tasks/prepare-tasks-with-secrets.yml
@@ -791,20 +651,6 @@ jobs:
       params:
         unpack: true
     - get: config
-  # - task: credhub-interpolate-config
-  #   image: platform-automation-image
-  #   file: platform-automation-tasks/tasks/credhub-interpolate.yml
-  #   params:
-  #     CREDHUB_CA_CERT: ((credhub-ca-cert))
-  #     CREDHUB_CLIENT: ((credhub-client))
-  #     CREDHUB_SECRET: ((credhub-secret))
-  #     CREDHUB_SERVER: ((credhub-server))
-  #     PREFIX: /
-  #     INTERPOLATION_PATH: config
-  #   input_mapping:
-  #     files: config
-  #   output_mapping:
-  #     interpolated-files: config
   - task: prepare-tasks-with-secrets
     image: platform-automation-image
     file: platform-automation-tasks/tasks/prepare-tasks-with-secrets.yml
@@ -844,20 +690,6 @@ jobs:
       params:
         unpack: true
     - get: config
-  # - task: credhub-interpolate-config
-  #   image: platform-automation-image
-  #   file: platform-automation-tasks/tasks/credhub-interpolate.yml
-  #   params:
-  #     CREDHUB_CA_CERT: ((credhub-ca-cert))
-  #     CREDHUB_CLIENT: ((credhub-client))
-  #     CREDHUB_SECRET: ((credhub-secret))
-  #     CREDHUB_SERVER: ((credhub-server))
-  #     PREFIX: /
-  #     INTERPOLATION_PATH: config
-  #   input_mapping:
-  #     files: config
-  #   output_mapping:
-  #     interpolated-files: config
   - task: prepare-tasks-with-secrets
     image: platform-automation-image
     file: platform-automation-tasks/tasks/prepare-tasks-with-secrets.yml
@@ -897,20 +729,6 @@ jobs:
       params:
         unpack: true
     - get: config
-  # - task: credhub-interpolate-config  
-  #   image: platform-automation-image
-  #   file: platform-automation-tasks/tasks/credhub-interpolate.yml
-  #   params:
-  #     CREDHUB_CA_CERT: ((credhub-ca-cert))
-  #     CREDHUB_CLIENT: ((credhub-client))
-  #     CREDHUB_SECRET: ((credhub-secret))
-  #     CREDHUB_SERVER: ((credhub-server))
-  #     PREFIX: /
-  #     INTERPOLATION_PATH: config
-  #   input_mapping:
-  #     files: config
-  #   output_mapping:
-  #     interpolated-files: config
   - task: prepare-tasks-with-secrets
     image: platform-automation-image
     file: platform-automation-tasks/tasks/prepare-tasks-with-secrets.yml
@@ -936,9 +754,7 @@ jobs:
     - put: mysql-stemcell
       params:
         file: mysql-stemcell/*.tgz
-
-
-
+        
 - name: fetch-platform-automation
   # We use the pivnet resource to bootstrap the pipeline,
   # and because this product is part of the pipeline, not the foundation
