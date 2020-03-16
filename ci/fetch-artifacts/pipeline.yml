@@ -261,7 +261,7 @@ jobs:
         unpack: true
     - get: config
   - task: credhub-interpolate-config
-    attempts: 10
+    
     image: platform-automation-image
     file: platform-automation-tasks/tasks/credhub-interpolate.yml
     params:
@@ -299,7 +299,7 @@ jobs:
         unpack: true
     - get: config
   - task: credhub-interpolate-config
-    attempts: 10
+    
     image: platform-automation-image
     file: platform-automation-tasks/tasks/credhub-interpolate.yml
     params:
@@ -342,7 +342,7 @@ jobs:
         unpack: true
     - get: config
   - task: credhub-interpolate-config
-    attempts: 10
+    
     image: platform-automation-image
     file: platform-automation-tasks/tasks/credhub-interpolate.yml
     params:
@@ -384,7 +384,7 @@ jobs:
         unpack: true
     - get: config
   - task: credhub-interpolate-config
-    attempts: 10
+    
     image: platform-automation-image
     file: platform-automation-tasks/tasks/credhub-interpolate.yml
     params:
@@ -426,7 +426,7 @@ jobs:
         unpack: true
     - get: config
   - task: credhub-interpolate-config
-    attempts: 10
+    
     image: platform-automation-image
     file: platform-automation-tasks/tasks/credhub-interpolate.yml
     params:
@@ -468,7 +468,7 @@ jobs:
         unpack: true
     - get: config
   - task: credhub-interpolate-config
-    attempts: 10
+    
     image: platform-automation-image
     file: platform-automation-tasks/tasks/credhub-interpolate.yml
     params:
@@ -511,7 +511,7 @@ jobs:
         unpack: true
     - get: config
   - task: credhub-interpolate-config
-    attempts: 10
+    
     image: platform-automation-image
     file: platform-automation-tasks/tasks/credhub-interpolate.yml
     params:
@@ -553,7 +553,7 @@ jobs:
         unpack: true
     - get: config
   - task: credhub-interpolate-config
-    attempts: 10
+    
     image: platform-automation-image
     file: platform-automation-tasks/tasks/credhub-interpolate.yml
     params:
@@ -595,7 +595,7 @@ jobs:
         unpack: true
     - get: config
   - task: credhub-interpolate-config
-    attempts: 10
+    
     image: platform-automation-image
     file: platform-automation-tasks/tasks/credhub-interpolate.yml
     params:
@@ -638,7 +638,7 @@ jobs:
         unpack: true
     - get: config
   - task: credhub-interpolate-config
-    attempts: 10
+    
     image: platform-automation-image
     file: platform-automation-tasks/tasks/credhub-interpolate.yml
     params:
@@ -681,7 +681,7 @@ jobs:
         unpack: true
     - get: config
   - task: credhub-interpolate-config
-    attempts: 10
+    
     image: platform-automation-image
     file: platform-automation-tasks/tasks/credhub-interpolate.yml
     params:
@@ -723,7 +723,7 @@ jobs:
         unpack: true
     - get: config
   - task: credhub-interpolate-config
-    attempts: 10
+    
     image: platform-automation-image
     file: platform-automation-tasks/tasks/credhub-interpolate.yml
     params:
@@ -765,7 +765,7 @@ jobs:
         unpack: true
     - get: config
   - task: credhub-interpolate-config
-    attempts: 10
+    
     image: platform-automation-image
     file: platform-automation-tasks/tasks/credhub-interpolate.yml
     params:
