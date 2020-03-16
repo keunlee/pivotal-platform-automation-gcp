@@ -795,7 +795,7 @@ jobs:
     resource: platform-automation-pivnet
     params:
       globs: ["*image*.tgz"]
-      unpack: true
+      unpack: false
   - aggregate:
     - put: platform-automation-image
       params:
@@ -804,7 +804,7 @@ jobs:
     resource: platform-automation-pivnet
     params:
       globs: ["*tasks*.zip"]
-      unpack: true
+      unpack: false
   - put: platform-automation-tasks
     params:
       file: platform-automation-pivnet/*tasks*.tgz
