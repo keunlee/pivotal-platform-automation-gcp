@@ -124,7 +124,7 @@ jobs:
       CREDHUB_SERVER: ((credhub-server))
       PREFIX: /
       SKIP_MISSING: true
-      # INTERPOLATION_PATH: config
+      INTERPOLATION_PATH: config/ops-manager/2.8
     input_mapping:
       files: config
     output_mapping:
