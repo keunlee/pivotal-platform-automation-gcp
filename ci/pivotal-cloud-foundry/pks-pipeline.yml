@@ -124,7 +124,7 @@ jobs:
       CREDHUB_SERVER: ((credhub-server))
       PREFIX: /
       SKIP_MISSING: true
-      INTERPOLATION_PATH: config/ops-manager/2.8
+      INTERPOLATION_PATH: config/ops-manager
     input_mapping:
       files: config
     output_mapping:
@@ -151,7 +151,7 @@ jobs:
       vars: config
     params:
       OPSMAN_CONFIG_FILE: config/ops-manager/2.8/gcp/config-vm.yml
-      VARS_FILES: vars/vars.yml
+      # VARS_FILES: vars/vars.yml
   - put: state
     params:
       file: generated-state/state.yml
