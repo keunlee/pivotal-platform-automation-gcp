@@ -97,7 +97,7 @@ resources:
     json_key: |
       ((gcp-credentials))
 
-credhub-interpolate-opsman-config: &credhub-interpolate-opsman-config
+credhub-interpolate-config: &credhub-interpolate-config
   image: platform-automation-image
   file: platform-automation-tasks/tasks/credhub-interpolate.yml
   params:
@@ -107,7 +107,7 @@ credhub-interpolate-opsman-config: &credhub-interpolate-opsman-config
     CREDHUB_SERVER: ((credhub-server))
     PREFIX: /
     SKIP_MISSING: true
-    INTERPOLATION_PATHS: config/ops-manager
+    INTERPOLATION_PATHS: config/ops-manager config/harbor-container-registry config/pivotal-container-service config/tasks config/cf
   input_mapping:
     files: config
   output_mapping:
@@ -131,7 +131,7 @@ jobs:
     - get: config
     - get: state
   - task: credhub-interpolate-config
-    <<: *credhub-interpolate-opsman-config
+    <<: *credhub-interpolate-config
   - task: create-vm
     image: platform-automation-image
     file: platform-automation-tasks/tasks/create-vm.yml
@@ -189,7 +189,7 @@ jobs:
         unpack: true
     - get: config
   - task: credhub-interpolate-config
-    <<: *credhub-interpolate-opsman-config
+    <<: *credhub-interpolate-config
   - task: export-installation
     image: platform-automation-image
     file: platform-automation-tasks/tasks/export-installation.yml
@@ -222,7 +222,7 @@ jobs:
     - get: config
     - get: state
   - task: credhub-interpolate-config
-    <<: *credhub-interpolate-opsman-config
+    <<: *credhub-interpolate-config
   - task: upgrade-opsman
     image: platform-automation-image
     file: platform-automation-tasks/tasks/upgrade-opsman.yml
@@ -273,32 +273,8 @@ jobs:
     - get: pks-product
       trigger: true
     - get: config
-  # - task: prepare-tasks-with-secrets
-  #   image: platform-automation-image
-  #   file: platform-automation-tasks/tasks/prepare-tasks-with-secrets.yml
-  #   input_mapping:
-  #     tasks: platform-automation-tasks
-  #     config: config
-  #     vars: config  # required only if using vars
-  #   output_mapping:
-  #     tasks: platform-automation-tasks
-  #   params:
-  #     CONFIG_PATHS: config
-  #     VARS_PATHS: vars # required only if using vars
   - task: credhub-interpolate-config
-    image: platform-automation-image
-    file: platform-automation-tasks/tasks/credhub-interpolate.yml
-    params:
-      CREDHUB_CA_CERT: ((credhub-ca-cert))
-      CREDHUB_CLIENT: ((credhub-client))
-      CREDHUB_SECRET: ((credhub-secret))
-      CREDHUB_SERVER: ((credhub-server))
-      PREFIX: /
-      INTERPOLATION_PATH: config
-    input_mapping:
-      files: config
-    output_mapping:
-      interpolated-files: config
+    <<: *credhub-interpolate-config
   - task: upload-product
     image: platform-automation-image
     file: platform-automation-tasks/tasks/upload-product.yml
@@ -333,34 +309,8 @@ jobs:
     - get: harbor-product
       trigger: true
     - get: config
-  # - task: prepare-tasks-with-secrets
-  #   image: platform-automation-image
-  #   file: platform-automation-tasks/tasks/prepare-tasks-with-secrets.yml
-  #   input_mapping:
-  #     tasks: platform-automation-tasks
-  #     config: config
-  #     vars: config  # required only if using vars
-  #   output_mapping:
-  #     tasks: platform-automation-tasks
-  #   params:
-  #     CONFIG_PATHS: config
-  #     VARS_PATHS: vars # required only if using vars
   - task: credhub-interpolate-config
-    attempts: 10
-    image: platform-automation-image
-    file: platform-automation-tasks/tasks/credhub-interpolate.yml
-    params:
-      CREDHUB_CA_CERT: ((credhub-ca-cert))
-      CREDHUB_CLIENT: ((credhub-client))
-      CREDHUB_SECRET: ((credhub-secret))
-      CREDHUB_SERVER: ((credhub-server))
-      PREFIX: /
-      INTERPOLATION_PATH: config
-    input_mapping:
-      files: config
-    output_mapping:
-      interpolated-files: config
-    timeout: 30m
+    <<: *credhub-interpolate-config
   - task: upload-product
     image: platform-automation-image
     file: platform-automation-tasks/tasks/upload-product.yml
@@ -400,31 +350,7 @@ jobs:
         - upload-and-stage-pks
       trigger: true
   - task: credhub-interpolate-config
-    image: platform-automation-image
-    file: platform-automation-tasks/tasks/credhub-interpolate.yml
-    params:
-      CREDHUB_CA_CERT: ((credhub-ca-cert))
-      CREDHUB_CLIENT: ((credhub-client))
-      CREDHUB_SECRET: ((credhub-secret))
-      CREDHUB_SERVER: ((credhub-server))
-      PREFIX: /
-      INTERPOLATION_PATH: config
-    input_mapping:
-      files: config
-    output_mapping:
-      interpolated-files: config
-  # - task: prepare-tasks-with-secrets
-  #   image: platform-automation-image
-  #   file: platform-automation-tasks/tasks/prepare-tasks-with-secrets.yml
-  #   input_mapping:
-  #     tasks: platform-automation-tasks
-  #     config: config
-  #     vars: config  # required only if using vars
-  #   output_mapping:
-  #     tasks: platform-automation-tasks
-  #   params:
-  #     CONFIG_PATHS: config
-  #     VARS_PATHS: vars # required only if using vars
+    <<: *credhub-interpolate-config
   - task: configure-pks
     image: platform-automation-image
     file: platform-automation-tasks/tasks/configure-product.yml
@@ -456,31 +382,7 @@ jobs:
         - upload-and-stage-harbor
       trigger: true
   - task: credhub-interpolate-config
-    image: platform-automation-image
-    file: platform-automation-tasks/tasks/credhub-interpolate.yml
-    params:
-      CREDHUB_CA_CERT: ((credhub-ca-cert))
-      CREDHUB_CLIENT: ((credhub-client))
-      CREDHUB_SECRET: ((credhub-secret))
-      CREDHUB_SERVER: ((credhub-server))
-      PREFIX: /
-      INTERPOLATION_PATH: config
-    input_mapping:
-      files: config
-    output_mapping:
-      interpolated-files: config
-  # - task: prepare-tasks-with-secrets
-  #   image: platform-automation-image
-  #   file: platform-automation-tasks/tasks/prepare-tasks-with-secrets.yml
-  #   input_mapping:
-  #     tasks: platform-automation-tasks
-  #     config: config
-  #     vars: config  # required only if using vars
-  #   output_mapping:
-  #     tasks: platform-automation-tasks
-  #   params:
-  #     CONFIG_PATHS: config
-  #     VARS_PATHS: vars # required only if using vars
+    <<: *credhub-interpolate-config
   - task: configure-harbor
     image: platform-automation-image
     file: platform-automation-tasks/tasks/configure-product.yml
@@ -513,31 +415,7 @@ jobs:
       trigger: true
     - get: config
   - task: credhub-interpolate-config
-    image: platform-automation-image
-    file: platform-automation-tasks/tasks/credhub-interpolate.yml
-    params:
-      CREDHUB_CA_CERT: ((credhub-ca-cert))
-      CREDHUB_CLIENT: ((credhub-client))
-      CREDHUB_SECRET: ((credhub-secret))
-      CREDHUB_SERVER: ((credhub-server))
-      PREFIX: /
-      INTERPOLATION_PATH: config
-    input_mapping:
-      files: config
-    output_mapping:
-      interpolated-files: config
-  # - task: prepare-tasks-with-secrets
-  #   image: platform-automation-image
-  #   file: platform-automation-tasks/tasks/prepare-tasks-with-secrets.yml
-  #   input_mapping:
-  #     tasks: platform-automation-tasks
-  #     config: config
-  #     vars: config  # required only if using vars
-  #   output_mapping:
-  #     tasks: platform-automation-tasks
-  #   params:
-  #     CONFIG_PATHS: config
-  #     VARS_PATHS: vars # required only if using vars
+    <<: *credhub-interpolate-config
   - task: upload-pks-stemcell
     image: platform-automation-image
     file: platform-automation-tasks/tasks/upload-stemcell.yml
@@ -572,31 +450,7 @@ jobs:
         unpack: true
     - get: config
   - task: credhub-interpolate-config
-    image: platform-automation-image
-    file: platform-automation-tasks/tasks/credhub-interpolate.yml
-    params:
-      CREDHUB_CA_CERT: ((credhub-ca-cert))
-      CREDHUB_CLIENT: ((credhub-client))
-      CREDHUB_SECRET: ((credhub-secret))
-      CREDHUB_SERVER: ((credhub-server))
-      PREFIX: /
-      INTERPOLATION_PATH: config
-    input_mapping:
-      files: config
-    output_mapping:
-      interpolated-files: config
-  # - task: prepare-tasks-with-secrets
-  #   image: platform-automation-image
-  #   file: platform-automation-tasks/tasks/prepare-tasks-with-secrets.yml
-  #   input_mapping:
-  #     tasks: platform-automation-tasks
-  #     config: config
-  #     vars: config  # required only if using vars
-  #   output_mapping:
-  #     tasks: platform-automation-tasks
-  #   params:
-  #     CONFIG_PATHS: config
-  #     VARS_PATHS: vars # required only if using vars
+    <<: *credhub-interpolate-config
   - task: apply-product-changes
     attempts: 2
     image: platform-automation-image
