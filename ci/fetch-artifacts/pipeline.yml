@@ -246,6 +246,19 @@ resources:
     json_key: |
       ((gcp-credentials))
 
+prepare-tasks-with-secrets: &prepare-tasks-with-secrets
+  image: platform-automation-image
+  file: platform-automation-tasks/tasks/prepare-tasks-with-secrets.yml
+  input_mapping:
+    tasks: platform-automation-tasks
+    config: config
+    vars: config  # required only if using vars
+  output_mapping:
+    tasks: platform-automation-tasks
+  params:
+    CONFIG_PATHS: config
+    VARS_PATHS: vars # required only if using vars
+
 jobs:
 - name: fetch-opsman
   serial_groups: [ fetch-ops ]
@@ -261,17 +274,7 @@ jobs:
         unpack: true
     - get: config
   - task: prepare-tasks-with-secrets
-    image: platform-automation-image
-    file: platform-automation-tasks/tasks/prepare-tasks-with-secrets.yml
-    input_mapping:
-      tasks: platform-automation-tasks
-      config: config
-      vars: config  # required only if using vars
-    output_mapping:
-      tasks: platform-automation-tasks
-    params:
-      CONFIG_PATHS: config
-      VARS_PATHS: vars # required only if using vars
+    <<: *prepare-tasks-with-secrets
   - task: download-opsman-image
     image: platform-automation-image
     file: platform-automation-tasks/tasks/download-product.yml
@@ -296,17 +299,7 @@ jobs:
         unpack: true
     - get: config
   - task: prepare-tasks-with-secrets
-    image: platform-automation-image
-    file: platform-automation-tasks/tasks/prepare-tasks-with-secrets.yml
-    input_mapping:
-      tasks: platform-automation-tasks
-      config: config
-      vars: config  # required only if using vars
-    output_mapping:
-      tasks: platform-automation-tasks
-    params:
-      CONFIG_PATHS: config
-      VARS_PATHS: vars # required only if using vars
+    <<: *prepare-tasks-with-secrets
   - task: download-pks-product-and-stemcell
     image: platform-automation-image
     file: platform-automation-tasks/tasks/download-product.yml
@@ -336,17 +329,7 @@ jobs:
         unpack: true
     - get: config
   - task: prepare-tasks-with-secrets
-    image: platform-automation-image
-    file: platform-automation-tasks/tasks/prepare-tasks-with-secrets.yml
-    input_mapping:
-      tasks: platform-automation-tasks
-      config: config
-      vars: config  # required only if using vars
-    output_mapping:
-      tasks: platform-automation-tasks
-    params:
-      CONFIG_PATHS: config
-      VARS_PATHS: vars # required only if using vars
+    <<: *prepare-tasks-with-secrets
   - task: download-harbor-product-and-stemcell
     image: platform-automation-image
     file: platform-automation-tasks/tasks/download-product.yml
@@ -375,17 +358,7 @@ jobs:
         unpack: true
     - get: config
   - task: prepare-tasks-with-secrets
-    image: platform-automation-image
-    file: platform-automation-tasks/tasks/prepare-tasks-with-secrets.yml
-    input_mapping:
-      tasks: platform-automation-tasks
-      config: config
-      vars: config  # required only if using vars
-    output_mapping:
-      tasks: platform-automation-tasks
-    params:
-      CONFIG_PATHS: config
-      VARS_PATHS: vars # required only if using vars
+    <<: *prepare-tasks-with-secrets
   - task: download-pas-product-and-stemcell
     image: platform-automation-image
     file: platform-automation-tasks/tasks/download-product.yml
@@ -414,17 +387,7 @@ jobs:
         unpack: true
     - get: config
   - task: prepare-tasks-with-secrets
-    image: platform-automation-image
-    file: platform-automation-tasks/tasks/prepare-tasks-with-secrets.yml
-    input_mapping:
-      tasks: platform-automation-tasks
-      config: config
-      vars: config  # required only if using vars
-    output_mapping:
-      tasks: platform-automation-tasks
-    params:
-      CONFIG_PATHS: config
-      VARS_PATHS: vars # required only if using vars
+    <<: *prepare-tasks-with-secrets
   - task: download-healthwatch-product-and-stemcell
     image: platform-automation-image
     file: platform-automation-tasks/tasks/download-product.yml
@@ -453,17 +416,7 @@ jobs:
         unpack: true
     - get: config
   - task: prepare-tasks-with-secrets
-    image: platform-automation-image
-    file: platform-automation-tasks/tasks/prepare-tasks-with-secrets.yml
-    input_mapping:
-      tasks: platform-automation-tasks
-      config: config
-      vars: config  # required only if using vars
-    output_mapping:
-      tasks: platform-automation-tasks
-    params:
-      CONFIG_PATHS: config
-      VARS_PATHS: vars # required only if using vars
+    <<: *prepare-tasks-with-secrets
   - task: download-jenkins-product-and-stemcell
     image: platform-automation-image
     file: platform-automation-tasks/tasks/download-product.yml
@@ -493,17 +446,7 @@ jobs:
         unpack: true
     - get: config
   - task: prepare-tasks-with-secrets
-    image: platform-automation-image
-    file: platform-automation-tasks/tasks/prepare-tasks-with-secrets.yml
-    input_mapping:
-      tasks: platform-automation-tasks
-      config: config
-      vars: config  # required only if using vars
-    output_mapping:
-      tasks: platform-automation-tasks
-    params:
-      CONFIG_PATHS: config
-      VARS_PATHS: vars # required only if using vars
+    <<: *prepare-tasks-with-secrets
   - task: download-redis-product-and-stemcell
     image: platform-automation-image
     file: platform-automation-tasks/tasks/download-product.yml
@@ -532,17 +475,7 @@ jobs:
         unpack: true
     - get: config
   - task: prepare-tasks-with-secrets
-    image: platform-automation-image
-    file: platform-automation-tasks/tasks/prepare-tasks-with-secrets.yml
-    input_mapping:
-      tasks: platform-automation-tasks
-      config: config
-      vars: config  # required only if using vars
-    output_mapping:
-      tasks: platform-automation-tasks
-    params:
-      CONFIG_PATHS: config
-      VARS_PATHS: vars # required only if using vars
+    <<: *prepare-tasks-with-secrets
   - task: download-rabbitmq-product-and-stemcell
     image: platform-automation-image
     file: platform-automation-tasks/tasks/download-product.yml
@@ -571,24 +504,13 @@ jobs:
         unpack: true
     - get: config
   - task: prepare-tasks-with-secrets
-    image: platform-automation-image
-    file: platform-automation-tasks/tasks/prepare-tasks-with-secrets.yml
-    input_mapping:
-      tasks: platform-automation-tasks
-      config: config
-      vars: config  # required only if using vars
-    output_mapping:
-      tasks: platform-automation-tasks
-    params:
-      CONFIG_PATHS: config
-      VARS_PATHS: vars # required only if using vars
-
+    <<: *prepare-tasks-with-secrets
   - task: download-scs-product-and-stemcell
     image: platform-automation-image
     file: platform-automation-tasks/tasks/download-product.yml
     params:
       CONFIG_FILE: config/p-scs/2.0/config-pivnet.yml
-      VARS_FILES: config/vars
+      VARS_FILES: config/vars/vars.yml
     output_mapping: {downloaded-stemcell: scs-stemcell}
   - aggregate:
     - put: scs-product
@@ -597,7 +519,6 @@ jobs:
     - put: scs-stemcell
       params:
         file: scs-stemcell/*.tgz
-
 
 - name: fetch-scs3
   serial_groups: [ fetch-ops ]
@@ -613,17 +534,7 @@ jobs:
         unpack: true
     - get: config
   - task: prepare-tasks-with-secrets
-    image: platform-automation-image
-    file: platform-automation-tasks/tasks/prepare-tasks-with-secrets.yml
-    input_mapping:
-      tasks: platform-automation-tasks
-      config: config
-      vars: config  # required only if using vars
-    output_mapping:
-      tasks: platform-automation-tasks
-    params:
-      CONFIG_PATHS: config
-      VARS_PATHS: vars # required only if using vars
+    <<: *prepare-tasks-with-secrets
   - task: download-scs-product-and-stemcell
     image: platform-automation-image
     file: platform-automation-tasks/tasks/download-product.yml
@@ -637,7 +548,6 @@ jobs:
     - put: scs3-stemcell
       params:
         file: scs3-stemcell/*.tgz
-
 
 - name: fetch-pasw
   serial_groups: [ fetch-ops ]
@@ -653,17 +563,7 @@ jobs:
         unpack: true
     - get: config
   - task: prepare-tasks-with-secrets
-    image: platform-automation-image
-    file: platform-automation-tasks/tasks/prepare-tasks-with-secrets.yml
-    input_mapping:
-      tasks: platform-automation-tasks
-      config: config
-      vars: config  # required only if using vars
-    output_mapping:
-      tasks: platform-automation-tasks
-    params:
-      CONFIG_PATHS: config
-      VARS_PATHS: vars # required only if using vars
+    <<: *prepare-tasks-with-secrets
   - task: download-pasw-product-and-stemcell
     image: platform-automation-image
     file: platform-automation-tasks/tasks/download-product.yml
@@ -692,17 +592,7 @@ jobs:
         unpack: true
     - get: config
   - task: prepare-tasks-with-secrets
-    image: platform-automation-image
-    file: platform-automation-tasks/tasks/prepare-tasks-with-secrets.yml
-    input_mapping:
-      tasks: platform-automation-tasks
-      config: config
-      vars: config  # required only if using vars
-    output_mapping:
-      tasks: platform-automation-tasks
-    params:
-      CONFIG_PATHS: config
-      VARS_PATHS: vars # required only if using vars
+    <<: *prepare-tasks-with-secrets
   - task: download-pcfmetrics-product-and-stemcell
     image: platform-automation-image
     file: platform-automation-tasks/tasks/download-product.yml
@@ -731,17 +621,7 @@ jobs:
         unpack: true
     - get: config
   - task: prepare-tasks-with-secrets
-    image: platform-automation-image
-    file: platform-automation-tasks/tasks/prepare-tasks-with-secrets.yml
-    input_mapping:
-      tasks: platform-automation-tasks
-      config: config
-      vars: config  # required only if using vars
-    output_mapping:
-      tasks: platform-automation-tasks
-    params:
-      CONFIG_PATHS: config
-      VARS_PATHS: vars # required only if using vars
+    <<: *prepare-tasks-with-secrets
   - task: download-mysql-product-and-stemcell
     image: platform-automation-image
     file: platform-automation-tasks/tasks/download-product.yml
