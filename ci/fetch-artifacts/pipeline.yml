@@ -588,6 +588,7 @@ jobs:
     file: platform-automation-tasks/tasks/download-product.yml
     params:
       CONFIG_FILE: config/p-scs/2.0/config-pivnet.yml
+      VARS_FILES: vars/vars.yml
     output_mapping: {downloaded-stemcell: scs-stemcell}
   - aggregate:
     - put: scs-product

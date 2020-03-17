@@ -150,6 +150,7 @@ jobs:
       vars: config
     params:
       OPSMAN_CONFIG_FILE: config/ops-manager/2.8/gcp/config-vm.yml
+      VARS_FILES: vars/vars.yml
   - put: state
     params:
       file: generated-state/state.yml
