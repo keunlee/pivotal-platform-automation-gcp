@@ -1,5 +1,5 @@
 ---
-pivnet-api-token: dbe9ce017e1145d589034710a42548f1-r
+pivnet-api-token: ((pivnet-api-token))
 pivnet-file-glob: pivotal-container-service-*.pivotal
 pivnet-product-slug: pivotal-container-service
 product-version-regex: 1\.6\.(.*)

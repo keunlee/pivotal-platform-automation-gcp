@@ -1,5 +1,5 @@
 ---
-pivnet-api-token: dbe9ce017e1145d589034710a42548f1-r
+pivnet-api-token: ((pivnet-api-token))
 pivnet-file-glob: harbor-container-registry-*.pivotal
 pivnet-product-slug: harbor-container-registry
 product-version-regex: 1\.10\.(.*)

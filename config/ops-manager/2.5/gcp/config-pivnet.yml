@@ -1,5 +1,5 @@
 ---
-pivnet-api-token: dbe9ce017e1145d589034710a42548f1-r
+pivnet-api-token: ((pivnet-api-token))
 pivnet-product-slug: ops-manager
 product-version-regex: 2\.5\.(.*)
 pivnet-file-glob: ops-manager-gcp*.yml
