@@ -259,6 +259,21 @@ prepare-tasks-with-secrets: &prepare-tasks-with-secrets
     CONFIG_PATHS: config
     VARS_PATHS: vars # required only if using vars
 
+credhub-interpolate-config: &credhub-interpolate-config
+  image: platform-automation-image
+  file: platform-automation-tasks/tasks/credhub-interpolate.yml
+  params:
+    CREDHUB_CA_CERT: ((credhub-ca-cert))
+    CREDHUB_CLIENT: ((credhub-client))
+    CREDHUB_SECRET: ((credhub-secret))
+    CREDHUB_SERVER: ((credhub-server))
+    PREFIX: /
+    INTERPOLATION_PATH: config
+  input_mapping:
+    files: config
+  output_mapping:
+    interpolated-files: config
+
 jobs:
 - name: fetch-opsman
   serial_groups: [ fetch-ops ]
@@ -298,8 +313,8 @@ jobs:
       params:
         unpack: true
     - get: config
-  - task: prepare-tasks-with-secrets
-    <<: *prepare-tasks-with-secrets
+  - task: credhub-interpolate-config
+    <<: *credhub-interpolate-config
   - task: download-pks-product-and-stemcell
     image: platform-automation-image
     file: platform-automation-tasks/tasks/download-product.yml
@@ -313,7 +328,6 @@ jobs:
     - put: pks-stemcell
       params:
         file: pks-stemcell/*.tgz
-
 
 - name: fetch-harbor
   serial_groups: [ fetch-ops ]
@@ -503,14 +517,26 @@ jobs:
       params:
         unpack: true
     - get: config
-  - task: prepare-tasks-with-secrets
-    <<: *prepare-tasks-with-secrets
+  - task: credhub-interpolate-config
+    image: platform-automation-image
+    file: platform-automation-tasks/tasks/credhub-interpolate.yml
+    params:
+      CREDHUB_CA_CERT: ((credhub-ca-cert))
+      CREDHUB_CLIENT: ((credhub-client))
+      CREDHUB_SECRET: ((credhub-secret))
+      CREDHUB_SERVER: ((credhub-server))
+      PREFIX: /
+      SKIP_MISSING: true
+      INTERPOLATION_PATHS: config/p-scs
+    input_mapping:
+      files: config
+    output_mapping:
+      interpolated-files: config
   - task: download-scs-product-and-stemcell
     image: platform-automation-image
     file: platform-automation-tasks/tasks/download-product.yml
     params:
       CONFIG_FILE: config/p-scs/2.0/config-pivnet.yml
-      VARS_FILES: config/vars/vars.yml
     output_mapping: {downloaded-stemcell: scs-stemcell}
   - aggregate:
     - put: scs-product
