@@ -12,7 +12,7 @@
 
 # sample 
 # GCP_REGION=us-east1
-# CLUSTER_NAME=mcarey
+# CLUSTER_NAME=mycluster
 # CLUSTER_PLAN=small    // i.e. small, medium, large
 
 ### The following instruction shows how to create a cluster named "${CLUSTER_NAME}"
@@ -38,7 +38,7 @@ gcloud compute target-pools add-instances ${CLUSTER_NAME}-master-api --instances
 gcloud compute forwarding-rules create ${CLUSTER_NAME}-master-api-8443 --region ${GCP_REGION} \
         --address ${CLUSTER_NAME}-master-api-ip --target-pool ${CLUSTER_NAME}-master-api --ports 8443
 
-# ### Access your cluster
+### Access your cluster
 pks get-credentials ${CLUSTER_NAME}
 kubectl cluster-info
 
