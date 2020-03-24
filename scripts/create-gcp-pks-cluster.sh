@@ -32,7 +32,7 @@ pks create-cluster ${CLUSTER_NAME} -e ${MASTER_EXTERNAL_IP} -p ${CLUSTER_PLAN}
 watch pks cluster ${CLUSTER_NAME}
 
 ### Configure your external load balancer to point to the master vm
-CLUSTER_UUID=$(pks clusters | grep ${CLUSTER_NAME} | awk '{print $3}')
+CLUSTER_UUID=$(pks clusters | grep ${CLUSTER_NAME} | awk '{print $5}')
 MASTER_INSTANCE_NAMES=$(gcloud compute instances list --filter "tags:service-instance-${CLUSTER_UUID}-master" --format "csv[no-heading](selfLink)" | tr '\n' ',' | sed 's/.$//')
 gcloud compute target-pools add-instances ${CLUSTER_NAME}-master-api --instances ${MASTER_INSTANCE_NAMES} 
 gcloud compute forwarding-rules create ${CLUSTER_NAME}-master-api-8443 --region ${GCP_REGION} \
