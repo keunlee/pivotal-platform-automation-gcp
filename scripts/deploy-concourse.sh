@@ -1,5 +1,5 @@
 gcloud dns managed-zones create test-zone --dns-name ${CONCOURSE_SUBDOMAIN_NAME}.${PCF_DOMAIN_NAME}. --description "PCF ZONE"
-DOMAIN=${CONCOURSE_SUBDOMAIN_NAME}.${PCF_DOMAIN_NAME} EMAIL=${MY_EMAIL} ~/ops-manager-automation-cc/bin/certbot.sh
+DOMAIN=${CONCOURSE_SUBDOMAIN_NAME}.${PCF_DOMAIN_NAME} EMAIL=${MY_EMAIL} ../bin/certbot.sh
 gcloud dns managed-zones delete test-zone
 
 GOOGLE_APPLICATION_CREDENTIALS=~/gcp_credentials.json \
